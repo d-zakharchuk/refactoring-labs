@@ -3,19 +3,21 @@
 <code>sudo apt-get install g++ make flex bison</code>
 
 ## How to run
-<code>cp dataset/* .<br>
+```
+cp dataset/* .<br>
 make<br>
 cat input | ./parser
-</code>
+```
 
 ## How to make parser for other commands
 (pcb parser based on dataset parser)<br><br>
-<code>cp dataset/* .<br>
+```
+cp dataset/* .<br>
 mv dataset.l pcb.l<br>
 mv dataset.y pcb.y<br>
 sed -i 's/dataset/pcb/g' Makefile pcb.l<br>
 sed -i 's/DATASET/PCB/g' Makefile pcb.l pcb.y
-</code>
+```
 
 You can generate these terminal commands using [tools/generate_terminal_commands.py](tools/generate_terminal_commands.py).<br>
 
@@ -164,7 +166,7 @@ Please, check your parser for the following input (depends on grammar):
 When there are many attributes, they don't fit in a single 80-char string. <br>
 To fix this, place STAR "*" symbol at the 72th position of the line, and 
 continue with other attributes on the next line.<br>
-##Issues
+## Issues
 - Both <code>DATASET</code> and <code>PCB</code> include <code>LABEL RULE</code>.
 - Need to remove <code>LABEL RULE</code> for grammars that don't have <code>LABEL RULE</code>.
 - When removing <code>LABEL RULE</code>, also remove <code>MAIN_OP</code>.
@@ -177,45 +179,45 @@ continue with other attributes on the next line.<br>
 + Open Yacc file **segm.y**
 + Find Yacc grammar rules under <code>ARGS</code> section
 
-
+```
     ARGS:                                   { }
     |       ARG                             { $$ = new ParserExpression($1, true, false, true); }
     |       ARG ',' ARGS                    { $$ = new ParserExpression($1, true, false, false, $3); }
+```
 + Add this rule:
 
        | ',' ARGS { $$ = new ParserExpression($2, true, false, false, true); }
 ### Solution for <code>PSBGEN, XDFLD</code>
 + Open Lex file **psbgen.l, xdfld.l**.
 + Find **ID** token regex
-    
-    
-    [a-zA-Z_][a-zA-Z0-9_]* {
-        yylval = yytext;
-        offset += yyleng;
-        if (offset > startOfPunchedCard) {
-            BEGIN STR;
-        }    
-        return ID;
-    }
+```
+[a-zA-Z_][a-zA-Z0-9_]* {
+	yylval = yytext;
+	offset += yyleng;
+	if (offset > startOfPunchedCard) {
+	    BEGIN STR;
+	} 
+	return ID;
+}
+```
 + modify the regex to include <code>/</code> symbol as follows: <br>
 <code>[a-zA-Z_/][a-zA-Z0-9_/]* </code>
 + find regex for other symbols
-
-
-    [-{};()<>=+*/!,] {
+```
+[-{};()<>=+*/!,] {
         offset += yyleng;
         if (offset > startOfPunchedCard) {
             BEGIN STR;
         }
         return *yytext;
     }
+```
 + remove <code>/</code> symbol from this regex.
 ### Solution for <code>XDFLD</code>
 + Perform steps described under section **Solution for <code>PSBGEN, XDFLD</code>**
 + Add quotes matching pattern to **ID** token regex as follows:<br>
-    
-    
-    [a-zA-Z_/][a-zA-Z0-9_/]*('([^']*)')* {
+ ```   
+ [a-zA-Z_/][a-zA-Z0-9_/]*('([^']*)')* {
         yylval = yytext;
         offset += yyleng;
         if (offset > startOfPunchedCard) {
@@ -223,3 +225,4 @@ continue with other attributes on the next line.<br>
         }   
         return ID;
     }
+```
