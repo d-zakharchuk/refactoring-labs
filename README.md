@@ -1,4 +1,4 @@
-#Refactoring Labs
+# Refactoring Labs
 "Refactoring Problems" course university labs based on **Lex&Yacc**.
 - [Lab 1](Lab1): Calculator with parenthesis support.
 - [Lab 2](Lab2): DBD and PSB commands parser.
