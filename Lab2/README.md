@@ -4,26 +4,26 @@
 
 ## How to run
 ```
-cp dataset/* .<br>
-make<br>
+cp dataset/* .
+make
 cat input | ./parser
 ```
 
 ## How to make parser for other commands
-(pcb parser based on dataset parser)<br><br>
+(pcb parser based on dataset parser)<br>
 ```
-cp dataset/* .<br>
-mv dataset.l pcb.l<br>
-mv dataset.y pcb.y<br>
-sed -i 's/dataset/pcb/g' Makefile pcb.l<br>
+cp dataset/* .
+mv dataset.l pcb.l
+mv dataset.y pcb.y
+sed -i 's/dataset/pcb/g' Makefile pcb.l
 sed -i 's/DATASET/PCB/g' Makefile pcb.l pcb.y
 ```
 
 You can generate these terminal commands using [tools/generate_terminal_commands.py](tools/generate_terminal_commands.py).<br>
 
-Take a look at the attribute grammar. <br>
-Check [grammar/dbd-gram-mi.txt](grammar/dbd-gram-mi.txt) for DATASET grammar. <br>
-Check [grammar/psb-gram-mi.txt](grammar/psb-gram-mi.txt) for PCB grammar. <br>
+Take a look at the attribute grammar.<br>
+Check [grammar/dbd-gram-mi.txt](grammar/dbd-gram-mi.txt) for DATASET grammar.<br>
+Check [grammar/psb-gram-mi.txt](grammar/psb-gram-mi.txt) for PCB grammar.<br>
     
     dataset: [dataset-name:*label* => symbol!  
         "DATASET"
@@ -71,7 +71,7 @@ Check [grammar/psb-gram-mi.txt](grammar/psb-gram-mi.txt) for PCB grammar. <br>
      ] + ""
 	pcb-eol :*eol*=>symbol ;
 
-Open **pcb.l** file and  replace DATASET attributes with PCB attributes. <br>
+Open **pcb.l** file and  replace DATASET attributes with PCB attributes.<br>
 For example, replace
 
     DD1 {
@@ -92,7 +92,9 @@ with:
     }
 You can easily do this using [tools/generate_lex_yacc.py](tools/generate_lex_yacc.py) with the 
 folowing command: <br>
-<code>python3 tools/generate_lex_yacc.py</code> <br>
+```
+python3 tools/generate_lex_yacc.py
+```
 It will produce a txt file with attributes inside <code>tools/out</code> directory. <br>
 
 Open **pcb.y** file and find the following lines:
@@ -156,7 +158,10 @@ with <code>PCB</code> grammar rules:<br>
     ;
 
 
-<code>python3 tools/generate_lex_yacc.py</code> also produces **Yacc** grammar rules.
+```
+python3 tools/generate_lex_yacc.py
+```
+also produces **Yacc** grammar rules.
 
 Please, check your parser for the following input (depends on grammar):
 
@@ -171,9 +176,9 @@ continue with other attributes on the next line.<br>
 - Need to remove <code>LABEL RULE</code> for grammars that don't have <code>LABEL RULE</code>.
 - When removing <code>LABEL RULE</code>, also remove <code>MAIN_OP</code>.
 - DO NOT place the newline symbol <code>\n</code> at the end of <code>input</code> file.
-- <code>SEGM</code> parser problem with grammar rule <code>RULES(,HERE)</code>
-- <code>PSBGEN</code> parser problem with parsing symbol <code>/</code>
-- <code>XDFLD</code> parser problem with parsing symbol <code>/</code> and text between quotes <code>' '</code>
+- <code>SEGM</code> parser problem with grammar rule <code>RULES(,HERE)</code>.
+- <code>PSBGEN</code> parser problem with parsing symbol <code>/</code>.
+- <code>XDFLD</code> parser problem with parsing symbol <code>/</code> and text between quotes <code>' '</code>.
 
 ### Solution for <code>SEGM</code>
 + Open Yacc file **segm.y**
