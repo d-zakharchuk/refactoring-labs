@@ -1,0 +1,9 @@
+# From psb-gram-mi.txt
+   senfld::= "senfld"
+    [
+       "name"    "="  senfld-name     => key-value
+     | "start"   "="  senfld-start    => key-value
+     | "replace" "="  senfld-replace  => key-value
+     | ","
+     ] + ""
+	sfld-eol   :*eol*=>symbol;

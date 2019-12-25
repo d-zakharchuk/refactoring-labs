@@ -1,0 +1,11 @@
+  PCB     TYPE=TP,MODIFY=YES                                           00000001
+  PCB     TYPE=TP,MODIFY=YES,ALTRESP=YES                               00000002
+  PCB  TYPE=DB,DBDNAME=RT0LREF,PROCOPT=GP,KEYLEN=250                   00000004
+  PCB  TYPE=DB,DBDNAME=RT0REF,PROCOPT=GP,KEYLEN=250,                  *00000005
+           PROCSEQ=RT0REFX2                                            00000015
+         PCB   TYPE=DB,DBDNAME=AMS,KEYLEN=100,PCBNAME=AMS              00000005
+         PCB   TYPE=TP,MODIFY=YES,EXPRESS=YES                          00000006
+         PCB   TYPE=TP,LTERM=MPRINT                                    00000007
+         PCB   TYPE=DB,DBDNAME=WKSDBDV1,KEYLEN=010,PROCOPT=AP          00000008
+         PCB   TYPE=DB,DBDNAME=HLDDBDV1,KEYLEN=017,PROCOPT=AP          00000009
+         PCB   TYPE=DB,DBDNAME=TABLE1,KEYLEN=100                       00000010

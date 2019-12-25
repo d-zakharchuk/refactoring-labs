@@ -1,0 +1,78 @@
+GRAMMAR DLI
+INHERITANCE.
+  EXEC-DLI-OBJECT: arg-name => arg-body; 
+		  <DLI-STM; FUNC-VALUE; PARAMS;
+		   arg-value; arg-body
+		   >.	
+  params: < params-func-pcb; params-func-segment; params-func-seglength; params-func-from; 
+	   params-func-setzero; params-func-keyfeedback; params-func-feedbacklen;
+	   params-func-into; params-func-offset; params-func-lockclass; params-func-movenext;
+	   params-func-getfirst; params-func-set; params-func-setcond; params-func-where;
+	   params-func-psb; params-func-fieldlength; params-func-keys; params-func-statusgroup;
+	   params-func-id; params-func-length; params-func-token; params-func-area; params-func-area1;
+	   params-func-length1; params-func-maxlength; params-singl-val-variable; params-singl-val-first;
+	   params-singl-val-last; params-singl-val-current; params-singl-val-locked; params-singl-val-setparent;
+	   params-singl-val-sysserve; params-singl-val-nodhabend; params-singl-val-dbquery; params-singl-val-vsam;
+	   params-singl-val-novsam; params-singl-val-formatted; params-singl-val-unformatted; params-singl-val-summary
+	  >.
+SYNTAX. 
+  dli-stm::=     ("SCHEDULE"  |  "SCHD")
+                   [exec-params => params]* ""  ["."]!;
+  dli-stm::=     func-name => func-value [ "using"]!
+   		                  [exec-params => params]* ""  ["."]!;           
+  func-value::= 
+          (
+            "dlet"      | "get next" | "gn"       | "get next in parent"      | "gnp" |
+      	    "get unique"| "gu"       | "insert"   | "isrt"       | "position" | "pos" |
+	    "replace"   | "repl"     | "retrieve" | "schedule"   | "schd"     |
+	    "terminate" | "term"     | "accept"   | "checkpoint" | "chkp"     |
+	    "deq"       | "load"     | "log"      | "query"      | "refresh"  |
+	    "rolb"      | "roll"     | "rols"     | "sets"       | "setu"     | "statistics" |
+	    "stat"      | "symchkp"  | "xrst"     
+          ); 
+
+ 	        params-func-pcb::=          "pcb"          "(" arg-name => arg-body ")" ;
+	        params-func-segment::=      "segment"      "(" arg-name => arg-body ")" ;
+	        params-func-seglength::=    "seglength"    "(" arg-name => arg-body ")" ;
+	        params-func-from::=         "from"         "(" arg-name => arg-body ")" ;
+ 		params-func-setzero::=      "setzero"      "(" arg-name => arg-body ")" ;
+		params-func-keyfeedback::=  "keyfeedback"  "(" arg-name => arg-body ")" ;
+		params-func-feedbacklen::=  "feedbacklen"  "(" arg-name => arg-body ")" ;
+		params-func-into::=         "into"         "(" arg-name => arg-body ")" ;
+		params-func-offset::=       "offset"       "(" arg-name => arg-body ")" ;
+		params-func-lockclass::=    "lockclass"    "(" arg-name => arg-body ")" ;
+		params-func-movenext::=     "movenext"     "(" arg-name => arg-body ")" ;
+		params-func-getfirst::=     "getfirst"     "(" arg-name => arg-body ")" ;
+		params-func-set::=          "set"          "(" arg-name => arg-body ")" ;
+		params-func-setcond::=      "setcond"      "(" arg-name => arg-body ")" ;
+		params-func-where::=        "where"        "(" arg-name => arg-body ")" ;
+		params-func-psb::=          "psb"          "(" arg-name => arg-body ")" ;
+		params-func-fieldlength::=  "fieldlength"  "(" arg-name => arg-body ")" ;
+		params-func-keys::=         "keys"         "(" arg-name => arg-body ")" ;
+		params-func-keylength::=    "keylength"    "(" arg-name => arg-body ")" ;
+		params-func-statusgroup::=  "statusgroup"  "(" arg-name => arg-body ")" ;
+		params-func-id::=           "id"           "(" arg-name => arg-body ")" ;
+		params-func-length::=       "length"       "(" arg-name => arg-body ")" ;
+		params-func-token::=        "token"        "(" arg-name => arg-body ")" ;
+		params-func-area::=         "area"         "(" arg-name => arg-body ")" ;
+		params-func-area1::=        "area#"        "(" arg-name => arg-body ")" ;
+		params-func-length1::=      "length#"      "(" arg-name => arg-body ")" ;
+		params-func-maxlength::=    "maxlength"    "(" arg-name => arg-body ")" ;
+
+		params-singl-val-variable::=  "variable" ;
+		params-singl-val-first::=     "first" ;
+		params-singl-val-last::=      "last" ;
+		params-singl-val-current::=   "current" ;
+		params-singl-val-locked::=    "locked" ; 
+		params-singl-val-setparent::= "setparent" ;
+		params-singl-val-sysserve::=  "sysserve" ;
+		params-singl-val-nodhabend::= "nodhabend" ;
+		params-singl-val-dbquery::=   "dbquery" ;
+		params-singl-val-vsam::=      "vsam" ;
+		params-singl-val-novsam::=    "novsam" ; 
+		params-singl-val-formatted::= "formatted" ;
+		params-singl-val-unformatted::= "unformatted" ;
+		params-singl-val-summary::=   "summary";
+
+	  arg-body::= "(" [arg-items =>  arg-value] + "," ")";
+	  arg-value::= (arg-value-integer => integer | arg-value-symbol => symbol);

@@ -1,0 +1,6 @@
+ DBD NAME=AMS,ACCESS=(HIDAM,OSAM)                                       00001000
+         DBD   NAME=AVAPPAR,ACCESS=(HIDAM,OSAM)                         00001010
+         DBD   NAME=COMMAND,                                           *00360000
+               ACCESS=(HDAM,OSAM),RMNAME=(DFSHDC40,2,120000,3500)       00371000
+ MY_LABEL        DBD   NAME=COMMAND,                                   *00360000
+               ACCESS=(HDAM,OSAM),RMNAME=(DFSHDC40,2,120000,3500)       00371000

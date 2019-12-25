@@ -1,0 +1,4 @@
+         XDFLD NAME=NUMDA,SEGMENT=SUITCOM,NULLVAL=C' ',                *00640000
+               SRCH=DA,SUBSEQ=/SX001                                    00650000
+         XDFLD NAME=CCODCMS,SEGMENT=POSTCOM,NULLVAL=C' ',              *00810000
+               SRCH=CODCMS,SUBSEQ=(DATINDX,NUPOST,/SX001)               00820000

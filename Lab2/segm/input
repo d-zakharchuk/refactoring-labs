@@ -1,0 +1,2 @@
+         SEGM  NAME=TEXTFIN,BYTES=70,PARENT=SUITCOM,FREQ=15,           *00998000
+               RULES=(,HERE)                                            00999000

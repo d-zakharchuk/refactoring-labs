@@ -1,0 +1,13 @@
+# From dbd-gram-mi.txt
+# Note: POINTER declared as PTR
+	lchild::= "LCHILD"
+      
+			[ "NAME"    "="  lchild-name     => key-value
+			| "POINTER" "="  lchild-pointer  => key-value 
+			| "PAIR"    "="  lchild-pair     => key-value
+			| "RULES"   "="  lchild-rules    => key-value
+			| "INDEX"   "="  lchild-index    => key-value
+			| "RKSIZE"  "="  lchild-rksize   => key-value
+			| ","  
+ 			]+ ""  	lchild-eline:*eol* =>symbol
+

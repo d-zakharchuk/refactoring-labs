@@ -1,0 +1,2 @@
+CD2      DATASET DD1=CDED2,                                            *00720000
+               DEVICE=3350,FRSPC=(99,10),BLOCK=6140,SCAN=0              00730000

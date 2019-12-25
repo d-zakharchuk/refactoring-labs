@@ -1,0 +1,10 @@
+# From dbd-gram-mi.txt
+	field::=  "FIELD"
+
+			[ "NAME"  "="  field-name     => key-value
+			| "BYTES" "="  field-bytes    => key-value  
+			| "START" "="  field-start    => key-value
+			| "TYPE"  "="  field-type     => key-value
+			| ","  
+  			] + ""    field-eline:*eol* => symbol 
+

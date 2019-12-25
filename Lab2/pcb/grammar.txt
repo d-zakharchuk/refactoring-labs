@@ -1,0 +1,24 @@
+# From psb-gram-mi.txt
+    pcb-unit::= pcb-head => pcb [sens => sens-stm] * "" ;
+    pcb::= [pcb-label: *label* => symbol]! 
+	"pcb"
+    [
+       "type"    "=" pcb-type     => key-value
+     | "lterm"   "=" pcb-lterm    => key-value
+     | "dbdname" "=" pcb-dbdname  => key-value
+     | "name"    "=" pcb-name     => key-value
+     | "procopt" "=" pcb-procopt  => key-value
+     | "altresp" "=" pcb-altresp  => key-value
+     | "sametrm" "=" pcb-sametrm  => key-value
+     | "sb"      "=" pcb-sb       => key-value
+     | "keylen"  "=" pcb-keylen   => key-value
+     | "procseq" "=" pcb-procseq  => key-value
+     | "view"    "=" pcb-view     => key-value
+     | "pos"     "=" pcb-pos      => key-value
+     | "modify"  "=" pcb-modify   => key-value
+     | "express" "=" pcb-express  => key-value
+     | "pcbname" "=" pcb-pcbname  => key-value
+     | "list"    "=" pcb-list     => key-value
+     | ","
+     ] + ""
+	pcb-eol :*eol*=>symbol ;

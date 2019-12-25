@@ -1,0 +1,28 @@
+# From psb-gram-mi.txt
+# Note: PSB declared as PSBGEN
+psb-unit::=   "end"  en-eol :*eol*=>symbol;
+	      
+   psb-unit::=  
+                "psbgen"  psbgen => psb 
+  	       [ "end" en-eol :*eol*=>symbol ]!;
+  
+   psb-unit::=   [ pcbs => pcb-unit] + "" 
+               [ "psbgen"  psbgen => psb ]!
+  	       [ "end"  en-eol :*eol*=>symbol ] ;
+ 
+
+    psb::= 
+    [
+       "psbname"  "=" psb-psbname  => key-value
+     | "lang"     "=" psb-lang     => key-value
+     | "maxq"     "=" psb-maxq     => key-value
+     | "cmpat"    "=" psb-cmpat    => key-value
+     | "ioasize"  "=" psb-ioasize  => key-value
+     | "ssasize"  "=" psb-ssasize  => key-value
+     | "ioeropn"  "=" psb-ioeropn  => key-value
+     | "olic"     "=" psb-olic     => key-value
+     | "gsrolbok" "=" psb-gsrolbok => key-value
+     | "lockmax"  "=" psb-lockmax  => key-value
+     | ","
+     ] + "" 
+        psb-eol :*eol*=>symbol  ;	

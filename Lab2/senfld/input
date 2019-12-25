@@ -1,0 +1,3 @@
+SENFLD NAME=MY_NAME,                                                   *00000001 
+     START=MY_START,                                                   *00000002
+           REPLACE=MY_REPLACE                                           00000003

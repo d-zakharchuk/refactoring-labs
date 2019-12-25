@@ -1,0 +1,5 @@
+         PSBGEN PSBNAME=CBBA306,LANG=PLI,CMPAT=NO                       00000001
+         PSBGEN PSBNAME=CBBA306,LANG=PLI,CMPAT=NO                       00000002
+         PSBGEN  LANG=PL/I,CMPAT=YES,PSBNAME=BTE008                     00000003
+         PSBGEN  LANG=PL/I,CMPAT=YES,                                  *00000004
+                  PSBNAME=BTE002                                        00000005

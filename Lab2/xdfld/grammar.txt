@@ -1,0 +1,13 @@
+# From dbd-gram-mi.txt
+	xdfld::=  "XDFLD"    
+
+			[ "NAME"    "="   xdfld-name     => key-value
+			| "SEGMENT" "="   xdfld-segment  => key-value
+			| "CONST"   "="   xdfld-const    => key-value
+			| "SRCH"    "="   xdfld-srch     => key-value
+			| "SUBSEQ"  "="   xdfld-subseq   => key-value
+			| "DDATA"   "="   xdfld-ddata    => key-value
+			| "NULLVAL" "="   xdfld-nullval  => key-value
+			| "EXTRN"   "="   xdfld-extrn    => key-value
+			| ","  
+        		] + ""		xdfld-eline:*eol* =>symbol

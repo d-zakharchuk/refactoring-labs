@@ -1,0 +1,21 @@
+# From dbd-gram-mi.txt
+# Note: POINTER declared as PTR
+   	segm-unit::= segm-head =>  segm [sfields => sfield] * ""   
+
+   	segm::= "SEGM" 
+	
+		[ "NAME"    "="   segm-name     => key-value
+		| "PARENT"  "="   segm-parent   => key-value  
+		| "BYTES"   "="   segm-bytes    => key-value  
+		| "POINTER" "="   segm-pointer  => key-value
+		| "FREQ"    "="   segm-freq     => key-value  
+		| "RULES"   "="   segm-rules    => key-value  
+		| "EXIT"    "="   segm-exit     => key-value
+		| "DSGROUP" "="   segm-dsgroup  => key-value
+		| "SSPTR"   "="   segm-ssptr    => key-value
+		| "COMPRTN" "="   segm-comprtn  => key-value
+		| "SOURCE"  "="   segm-source   => key-value
+		| "RMNAME"  "="   segm-rmname   => key-value
+		| ","  
+		] + ""
+	     segm-eline:*eol* => symbol 

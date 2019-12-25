@@ -1,0 +1,17 @@
+# From dbd-gram-mi.txt
+  	dbd-unit::= dbd-head => dbd     [datasets => dataset-unit] + "" ;
+      dbd::= [dbd-label-name:*label* => symbol]!  /*for symbols which come from flex*/
+               "DBD"  
+      
+		[ "NAME"     "="   dbd-name     => key-value
+		| "ACCESS"   "="   dbd-access   => key-value
+		| "RMNAME"   "="   dbd-rmname   => key-value
+		| "FRSPC"    "="   dbd-frspc    => key-value
+		| "PSNAME"   "="   dbd-psname   => key-value
+		| "PASSWD"   "="   dbd-passwd   => key-value
+		| "DATXEXIT" "="   dbd-datxexit => key-value
+		| "EXIT"     "="   dbd-exit     => key-value
+		| "VERSION"  "="   dbd-version  => key-value
+		| "," 
+		]+ "" 
+	dbd-eol:*eol*=>symbol ;  /*for symbols which come from flex*/

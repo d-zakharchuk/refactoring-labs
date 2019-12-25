@@ -1,0 +1,2 @@
+  PCB  TYPE=DB,DBDNAME=RT0REF,PROCOPT=GP,KEYLEN=250,                  *00000005
+           PROCSEQ=RT0REFX2                                            00000015

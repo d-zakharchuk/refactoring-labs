@@ -1,0 +1,25 @@
+# From dbd-gram-mi.txt
+      dataset-unit::= dataset-head => dataset [segments=> segm-unit] + ""
+
+    	dataset: [dataset-name:*label* => symbol!  
+			"DATASET" 
+
+		[ "DD1"    "="    dataset-dd1      => key-value  
+		| "DD2"    "="    dataset-dd2      => key-value  
+		| "OWFLW"  "="    dataset-owflw    => key-value        
+		| "BLOCK"  "="    dataset-block    => key-value
+		| "RECORD" "="    dataset-record   => key-value
+		| "SIZE"   "="    dataset-size     => key-value
+		| "RECFRM" "="    dataset-recfrm   => key-value
+		| "REL"    "="    dataset-rel      => key-value
+		| "SCAN"   "="    dataset-scan     => key-value
+		| "DEVICE" "="    dataset-device   => key-value
+		| "RMNAME" "="    dataset-rmname   => key-value
+		| "FRSPC"  "="    dataset-frspc    => key-value
+		| "SEGM"   "="    dataset-segm     => key-value
+		| "MINLEN" "="    dataset-minlen   => key-value
+		| "LOGICAL"   
+		| ","  
+		]+ ""
+           dataset-eline:*eol*=>symbol ;
+

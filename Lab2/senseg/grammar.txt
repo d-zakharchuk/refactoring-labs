@@ -1,0 +1,11 @@
+# From psb-gram-mi.txt
+    senseg::=  "senseg"
+    [
+        "name"    "="  senseg-name     => key-value
+     |  "parent"  "="  senseg-parent   => key-value
+     |  "procopt" "="  senseg-procopt  => key-value
+     |  "ssptr"   "="  senseg-ssptr    => key-value
+     |  "indices" "="  senseg-indices  => key-value
+     |  ","
+     ] + ""
+	sseg-eol:*eol*=>symbol;	
